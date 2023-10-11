@@ -27,8 +27,26 @@ def main():
         else:
             print("Invalid choice. Please enter 1, 2, 3, or 4.")
 
-def list_items_in_stock():
-    print("list_items_in_stock")
+def list_items_in_stock(stock):
+    print(stock, "stock is here----")
+    
+    items_in_warehouse1 = 0
+    items_in_warehouse2 = 0 
+
+    for item in stock:
+        if item.get('warehouse') == 1:
+            items_in_warehouse1 += 1
+        elif item.get('warehouse') == 2:
+            items_in_warehouse2 += 1
+    
+    print("Items in stock:\n")
+    for item in stock:
+        print (f"{item['state']} {item['category']}  {item['date_of_stock']}")
+            
+    print(f"Total items in warehouse 1: {items_in_warehouse1}")
+    print(f"Total items in warehouse 2: {items_in_warehouse2}")
+
+
 def search_and_order_item():
     print("search_and_order_item")
 def browse_by_category():
@@ -36,3 +54,5 @@ def browse_by_category():
 
 if __name__ == "__main__":
     main()
+
+
