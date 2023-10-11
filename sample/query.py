@@ -20,7 +20,7 @@ def main():
         elif choice == "2":
             search_and_order(stock)
         elif choice == "3":
-            browse_by_category(stock, username)
+            browse_by_category(stock)
         elif choice == "4":
             print(f"Thank you for your visit, {username}.")
             break
@@ -66,7 +66,7 @@ def search_and_order(stock):
     else:
         print(f"Amount available in Warehouse 1: {total_available1}")
         print(f"Amount available in Warehouse 2: {total_available2}")
-        print(f"The total amount available of this items is: {total_available}")
+        print(f"The total amount available of this item is: {total_available}")
 
     order = input("Would you like to order this item? (y/n) ").lower()
 
@@ -85,9 +85,28 @@ def search_and_order(stock):
                     print(f"{total_available1} {item_name} have been ordered from Warehouse 1.")
                 else:
                     print(f"{total_available2} {item_name} have been ordered from Warehouse 2.")
+            else:
+                print(f"{desired_amount} {item_name} have not been ordered.")
 
-def browse_by_category():
-    print("browse_by_category")
+def browse_by_category(stock):
+    categories = set(item['category'] for item in stock)
+    print(categories, "categories is here ----")
+    
+    print("Available categories:")
+    for category in categories:
+        print(category)
+    
+    category_choice = input("Enter a category to browse: ")
+    
+    items_in_category = [item for item in stock if item['category'] == category_choice]
+    
+    if not items_in_category:
+        print(f"No items found in the {category_choice} category.")
+    else:
+        print(f"Items in the {category_choice} category:")
+        for item in items_in_category:
+            print(f"{item['state']} {item['category']}")
+
 
 if __name__ == "__main__":
     main()
