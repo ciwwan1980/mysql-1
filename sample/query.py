@@ -17,6 +17,7 @@ def main():
 
         if choice == "1":
             list_items_in_stock(stock)
+            count_items_in_warehouses(stock)
         elif choice == "2":
             search_and_order(stock)
         elif choice == "3":
