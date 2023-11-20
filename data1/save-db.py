@@ -1,10 +1,10 @@
-
+import os
 import mysql.connector
 
 # Replace these values with your MySQL connection details
-host = "localhost"
-user = 'newuser'  # Remove the comma here
-password = 'Dci1234!'
+host = os.getenv("DB_HOST", "localhost")
+user = os.getenv("DB_USER", "newuser")
+password = os.getenv("DB_PASSWORD", "Dci1234!")
 
 # Create a connection to the MySQL server
 connection = mysql.connector.connect(
@@ -12,6 +12,7 @@ connection = mysql.connector.connect(
     user=user,
     password=password
 )
+
 # Create a cursor object to interact with the database
 cursor = connection.cursor()
 
@@ -39,6 +40,7 @@ cursor.execute("""
 # Insert more sample data
 data = [
     ('John', 'Doe', '1990-01-15', '2021-05-10', 50000.00),
+    ('Johnn', 'Doee', '1990-01-15', '2021-05-10', 630000.00),
     ('Alice', 'Smith', '1985-08-22', '2022-01-20', 60000.00),
     ('Bob', 'Johnson', '1988-04-30', '2020-11-05', 55000.00)
 ]
