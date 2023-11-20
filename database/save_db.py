@@ -1,14 +1,18 @@
+import os
+from dotenv import load_dotenv
 import mysql.connector
 from mysql.connector import Error
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Replace these with your actual database credentials
 db_config = {
-    'host': 'localhost',
-    'database': 'sql_store',
-    'user': 'dci-student',
-    'password': 'Dci1234!'
+    'host': os.getenv('DB_HOST'),
+    'database': os.getenv('DB_DATABASE'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD')
 }
-
 # JSON data
 stock = [
    
