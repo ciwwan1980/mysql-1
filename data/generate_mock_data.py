@@ -1,7 +1,7 @@
-"""Mock data for this exercise."""
 import json
 from datetime import datetime, timedelta
 from random import random, randrange
+import os
 
 NAME_PREFIX = ('Brand new', 'Second hand', 'Almost new', 'High quality',
                'Cheap', 'Elegant', 'Funny', 'Exceptional')
@@ -63,6 +63,8 @@ def create(amount=5):
 def save(data=None, filename="warehouse"):
     """Save the mocked data into a json file."""
     if data:
+        # Create the 'sample' directory if it doesn't exist
+        os.makedirs("sample", exist_ok=True)
         with open(f"sample/{filename}.py", "w") as file:
             file.write("stock = ")
             file.write(json.dumps(data, default=str))
@@ -75,7 +77,7 @@ def create_and_save(amount=5, filename="warehouse"):
 
 
 confirm = input("This will replace the data in the exercise."
-                " Are you sure you want to proceed?(y/n) ")
+                " Are you sure you want to proceed? (y/n) ")
 
 if confirm.lower() == "y":
     create_and_save(amount=20, filename="data")
